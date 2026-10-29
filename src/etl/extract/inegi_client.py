@@ -1,6 +1,6 @@
 """Cliente HTTP para el Servicio Web del Catálogo Único de INEGI."""
 
-from httpx import Client, Response
+from httpx import BaseTransport, Client, Response
 
 from etl.core.config import Settings
 from etl.shared.http import DelayedTransport, raise_for_status
@@ -9,10 +9,10 @@ from etl.shared.http import DelayedTransport, raise_for_status
 class InegiClient:
   """Realiza solicitudes HTTP a la API del Catálogo Único de INEGI."""
 
-  def __init__(self) -> None:
+  def __init__(self, transport: BaseTransport | None = None) -> None:
     self._client: Client = Client(
       timeout=30.0,
-      transport=DelayedTransport(0.2),
+      transport=transport if transport is not None else DelayedTransport(0.2),
       base_url=Settings.INEGI_API_BASE_URL.rstrip("/") + "/",
       event_hooks={"response": [raise_for_status]},
     )

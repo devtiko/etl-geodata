@@ -39,6 +39,14 @@ Los archivos obtenidos se guardan bajo `data/`, organizados en datos originales 
 
 Para más información sobre las fuentes y las rutas consultadas, consulta [`docs/research.md`](docs/research.md).
 
+## Pruebas
+
+Ejecutar todas las pruebas:
+
+```bash
+uv run pytest
+```
+
 ## Limitaciones
 
 - El tiempo de ejecución depende de la cantidad de datos solicitados y de la disponibilidad del servicio de INEGI.
