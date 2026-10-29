@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from etl!")
+"""Paquete del ETL de datos geográficos de INEGI."""
